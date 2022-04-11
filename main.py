@@ -2,24 +2,17 @@ from tkinter import *
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
-class Generate_Password():
+def Generate_Password():
     pass
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
-class Save_Password():
-    combination_of_entries = ""
+def Save_Password():
     data_file = open("password_data.txt", "a")
-    combination_of_entries += website_name_variable.get()
-    combination_of_entries += email_entry.get()
-    combination_of_entries += password_entry.get()
-    data_file.write(f"{combination_of_entries}")
+    data_file.write(f"\n{website_name_variable.get()}  |  {email_entry_variable.get()}  |"
+                    f"  {password_entry.get()}")
     data_file.close()
-    #
-    # data_file = open("password_data.txt", "a")
-    # data_file.write(f"{website_entry.get()}  I  {email_entry.get()}  I  {password_entry.get()}")
-    # data_file.close()
-    #
+
 
 
 
@@ -47,20 +40,21 @@ generate_password_button = Button(text="Generate password", command=Generate_Pas
 generate_password_button.grid(column=2, row=3)
 
 
-
+website_name_variable = StringVar()
 website_entry = Entry(width=35, textvariable=website_name_variable)
 website_entry.grid(column=1, row=1, columnspan=2)
 website_entry.focus()
 
-
-email_entry = Entry(width=35)
+email_entry_variable = StringVar()
+email_entry = Entry(width=35, textvariable=email_entry_variable)
 email_entry.grid(column=1, row=2, columnspan=2)
 email_entry.insert(0, "testing@gmail.com")
 
-password_entry = Entry(width=21)
+password_entry_variable = StringVar()
+password_entry = Entry(width=21, textvariable=password_entry_variable)
 password_entry.grid(column=1, row=3)
 
-save_password_button = Button(text="Add password", width=36, command=Save_Password())
+save_password_button = Button(text="Add password", width=36, command=Save_Password)
 save_password_button.grid(column=1, row=4, columnspan=2)
 
 
