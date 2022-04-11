@@ -12,7 +12,9 @@ def Save_Password():
     data_file.write(f"\n{website_name_variable.get()}  |  {email_entry_variable.get()}  |"
                     f"  {password_entry.get()}")
     data_file.close()
-
+    website_entry.delete(0, END)
+    email_entry.delete(0, END)
+    password_entry.delete(0, END)
 
 
 
